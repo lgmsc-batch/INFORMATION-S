@@ -2,281 +2,182 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>LALBAGH GOV. MODEL SCHOOL AND COLLEGE</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <title>LGMSC Student Portal</title>
   <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      background: linear-gradient(to bottom, #f0f4ff, #d9e4ff);
-      color: #333;
-    }
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+    body{background:#0d1117;color:white;text-align:center;}
+    header{padding:20px;}
+    header img{max-height:70px;margin:10px auto;display:block;}
 
-    header {
-      background: linear-gradient(135deg, #4a90e2, #50e3c2);
-      color: white;
-      text-align: center;
-      padding: 40px 20px;
-      position: relative;
-      overflow: hidden;
-    }
+    /* Slideshow */
+    .slideshow{position:relative;max-width:800px;margin:10px auto;overflow:hidden;border-radius:10px;}
+    .slide{display:none;width:100%;height:200px;line-height:200px;background:#222;color:white;font-size:22px;position:absolute;top:0;left:0;}
+    .slide.active{display:block;animation:fadeIn 1s;}
+    @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
 
-    header img {
-      height: 100px;
-      border-radius: 15px;
-      border: 3px solid white;
-      margin-top: 10px;
-    }
+    /* Containers */
+    .container{max-width:900px;margin:20px auto;background:#161b22;padding:20px;border-radius:10px;display:none;animation:fadeIn 0.5s;}
+    input,button{width:100%;padding:10px;margin:10px 0;border-radius:5px;border:none;}
+    input{background:#21262d;color:white;}
+    button{background:#238636;color:white;cursor:pointer;}
+    button:hover{background:#2ea043;}
 
-    h1 {
-      font-size: 2em;
-      margin: 0;
-      animation: fadeIn 2s ease-in-out;
-    }
+    /* Student cards */
+    .student-card{background:#21262d;padding:10px;border-radius:10px;margin:10px;cursor:pointer;transition:0.3s;display:inline-block;width:250px;}
+    .student-card:hover{transform:scale(1.05);background:#30363d;}
+    .student-card img{width:100px;height:100px;border-radius:50%;margin:10px 0;}
 
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(-20px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #4a90e2;
-    }
-
-    .form-group {
-      margin-bottom: 10px;
-    }
-
-    input, select, button {
-      padding: 10px;
-      margin: 5px 0;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      width: 100%;
-      max-width: 300px;
-      display: block;
-    }
-
-    button {
-      background: #4a90e2;
-      color: white;
-      border: none;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background: #50e3c2;
-    }
-
-    .student-card {
-      display: flex;
-      align-items: center;
-      border-radius: 10px;
-      background: white;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      padding: 15px;
-      margin: 15px 0;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .student-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
-
-    .student-card img {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-right: 15px;
-      border: 3px solid #4a90e2;
-    }
-
-    #searchResults {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-    }
-
-    /* Animated Button */
-    .btn-animated {
-      background: linear-gradient(135deg, #4a90e2, #50e3c2);
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 30px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
-
-    .btn-animated:hover {
-      transform: scale(1.1);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    }
-
-    .logo-container {
-      margin-top: 15px;
-    }
-
-    .logo-container img {
-      max-height: 100px;
-      border-radius: 15px;
-      border: 3px solid white;
-      animation: slideIn 2s ease-in-out;
-    }
-
-    @keyframes slideIn {
-      from {opacity: 0; transform: translateX(-50px);}
-      to {opacity: 1; transform: translateX(0);}
-    }
+    /* Profile Page */
+    #profilePage img{width:150px;height:150px;border-radius:10px;margin:10px auto;display:block;}
+    .back-btn{background:#f85149;}
 
   </style>
 </head>
 <body>
-
 <header>
-  <h1 id="schoolName">LALBAGH GOV. MODEL SCHOOL AND COLLEGE</h1>
-  <div class="logo-container">
-    <img id="schoolLogo" src="" alt="School Logo">
-  </div>
+  <img id="schoolLogo" src="" alt="School Logo">
+  <h1 id="schoolName">Lalbagh Govt. Model School & College</h1>
+  <p>Student Directory Portal</p>
 </header>
 
-<div class="container">
-  <h2>Admin Panel - Add Student</h2>
-  <div class="form-group">
-    <input type="text" id="studentName" placeholder="Name">
-  </div>
-  <div class="form-group">
-    <input type="number" id="studentAge" placeholder="Age">
-  </div>
-  <div class="form-group">
-    <input type="date" id="studentDOB" placeholder="Birth Date">
-  </div>
-  <div class="form-group">
-    <select id="studentGender">
-      <option value="">Select Gender</option>
-      <option>Male</option>
-      <option>Female</option>
-      <option>Other</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <input type="text" id="studentEmail" placeholder="Email">
-  </div>
-  <div class="form-group">
-    <input type="text" id="studentPhone" placeholder="Phone">
-  </div>
-  <div class="form-group">
-    <input type="text" id="studentFacebook" placeholder="Facebook URL">
-  </div>
-  <div class="form-group">
-    <input type="text" id="studentInstagram" placeholder="Instagram URL">
-  </div>
-  <div class="form-group">
-    <input type="file" id="studentPhoto">
-  </div>
-  <button class="btn-animated" onclick="addStudent()">Add Student</button>
+<!-- Slideshow -->
+<div class="slideshow" id="slideshow">
+  <div class="slide active">?? Welcome to LGMSC Portal!</div>
+  <div class="slide">?? Exam starts next week, get ready!</div>
+  <div class="slide">?? Annual Sports Day coming soon!</div>
+</div>
 
+<!-- Login Section -->
+<div class="container" id="loginSection" style="display:block;">
+  <input type="text" id="loginEmail" placeholder="Enter Email or Phone">
+  <button onclick="login()">Login</button>
+  <button onclick="showAdminLogin()">Admin Login</button>
+</div>
+
+<!-- Search Section -->
+<div class="container" id="searchSection">
+  <input type="text" id="searchBox" placeholder="Search student by name..." onkeyup="searchStudents()">
+  <div id="studentList"></div>
+  <button class="back-btn" onclick="goBack()">Logout</button>
+</div>
+
+<!-- Profile Page -->
+<div class="container" id="profilePage"></div>
+
+<!-- Admin Section -->
+<div class="container" id="adminSection">
+  <h2>Admin Panel</h2>
+  <input id="studentName" placeholder="Student Name">
+  <input id="studentAge" placeholder="Age" type="number">
+  <input id="studentDOB" placeholder="Birth Date" type="date">
+  <input id="studentGender" placeholder="Gender">
+  <input id="studentClass" placeholder="Class">
+  <input id="studentRoll" placeholder="Roll" type="number">
+  <input id="studentSocial1" placeholder="Social Media Link 1">
+  <input id="studentSocial2" placeholder="Social Media Link 2">
+  <input id="studentEmail" placeholder="Email">
+  <input id="studentPhone" placeholder="Phone / WhatsApp">
+  <input id="studentPhoto" placeholder="Photo URL">
+  <button onclick="addStudent()">Add Student</button>
   <hr>
-
-  <h2>Student Search</h2>
-  <div class="form-group">
-    <input type="text" id="searchInput" placeholder="Type name to search">
-    <button class="btn-animated" onclick="searchStudent()">Search</button>
-  </div>
-
-  <div id="searchResults"></div>
+  <h3>Update School Info</h3>
+  <input id="schoolNameInput" placeholder="Enter School Name">
+  <input id="schoolLogoInput" placeholder="Enter Logo URL">
+  <button onclick="updateSchoolInfo()">Update</button>
+  <button class="back-btn" onclick="goBack()">Back</button>
 </div>
 
 <script>
-  let students = JSON.parse(localStorage.getItem('students') || '[]');
+let students = JSON.parse(localStorage.getItem("students")) || [];
+const adminPassword = "admin123";
 
-  // Logo Upload
-  const schoolLogo = document.getElementById('schoolLogo');
-  const savedLogo = localStorage.getItem('schoolLogo');
-  if(savedLogo) schoolLogo.src = savedLogo;
+/* Show specific section */
+function showSection(id){
+  document.querySelectorAll(".container").forEach(c=>c.style.display="none");
+  document.getElementById(id).style.display="block";
+}
 
-  document.querySelector('#schoolLogo').addEventListener('click', () => {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.onchange = e => {
-      const file = e.target.files[0];
-      const reader = new FileReader();
-      reader.onload = function(ev){
-        schoolLogo.src = ev.target.result;
-        localStorage.setItem('schoolLogo', ev.target.result);
-      }
-      reader.readAsDataURL(file);
-    };
-    input.click();
+/* Login */
+function login(){ showSection("searchSection"); displayStudents(students); }
+
+/* Admin login */
+function showAdminLogin(){
+  let pass = prompt("Enter Admin Password:");
+  if(pass===adminPassword) showSection("adminSection");
+  else alert("Wrong Password!");
+}
+
+/* Add Student */
+function addStudent(){
+  let student = {
+    name:studentName.value, age:studentAge.value, dob:studentDOB.value,
+    gender:studentGender.value, class:studentClass.value, roll:studentRoll.value,
+    social1:studentSocial1.value, social2:studentSocial2.value,
+    email:studentEmail.value, phone:studentPhone.value, photo:studentPhoto.value
+  };
+  students.push(student);
+  localStorage.setItem("students", JSON.stringify(students));
+  alert("Student Added!");
+}
+
+/* Display Students */
+function displayStudents(list){
+  let html="";
+  list.forEach((s,i)=>{
+    html += `<div class='student-card' onclick="viewStudent(${i})">
+      <img src="${s.photo}" alt="Photo"><br>
+      <strong>${s.name}</strong><br>
+      Class ${s.class} • Roll ${s.roll}
+    </div>`;
   });
+  document.getElementById("studentList").innerHTML = html || "<p>No students found</p>";
+}
 
-  function addStudent() {
-    const name = document.getElementById('studentName').value;
-    const age = document.getElementById('studentAge').value;
-    const dob = document.getElementById('studentDOB').value;
-    const gender = document.getElementById('studentGender').value;
-    const email = document.getElementById('studentEmail').value;
-    const phone = document.getElementById('studentPhone').value;
-    const facebook = document.getElementById('studentFacebook').value;
-    const instagram = document.getElementById('studentInstagram').value;
-    const photoFile = document.getElementById('studentPhoto').files[0];
+/* Search */
+function searchStudents(){
+  let term = searchBox.value.toLowerCase();
+  let filtered = students.filter(s=>s.name.toLowerCase().includes(term));
+  displayStudents(filtered);
+}
 
-    if(!name) { alert("Name required"); return; }
+/* View Profile */
+function viewStudent(i){
+  let s = students[i];
+  document.getElementById("profilePage").innerHTML = `
+    <h2>${s.name}</h2>
+    <img src="${s.photo}" alt="Photo">
+    <p><b>Age:</b> ${s.age}</p>
+    <p><b>DOB:</b> ${s.dob}</p>
+    <p><b>Gender:</b> ${s.gender}</p>
+    <p><b>Class:</b> ${s.class}</p>
+    <p><b>Roll:</b> ${s.roll}</p>
+    <p><b>Email:</b> ${s.email}</p>
+    <p><b>Phone/WhatsApp:</b> ${s.phone}</p>
+    <p><b>Social 1:</b> <a href="${s.social1}" target="_blank">${s.social1}</a></p>
+    <p><b>Social 2:</b> <a href="${s.social2}" target="_blank">${s.social2}</a></p>
+    <button class="back-btn" onclick="showSection('searchSection')">Back</button>
+  `;
+  showSection("profilePage");
+}
 
-    const reader = new FileReader();
-    reader.onload = function(e){
-      const photo = e.target.result;
-      const student = { name, age, dob, gender, email, phone, social_media: { facebook, instagram }, photo };
-      students.push(student);
-      localStorage.setItem('students', JSON.stringify(students));
-      alert("Student added!");
-      document.querySelector('form')?.reset();
-    }
+/* Update School Info */
+function updateSchoolInfo(){
+  if(schoolNameInput.value) schoolName.innerText=schoolNameInput.value;
+  if(schoolLogoInput.value) schoolLogo.src=schoolLogoInput.value;
+}
 
-    if(photoFile) reader.readAsDataURL(photoFile);
-    else {
-      const student = { name, age, dob, gender, email, phone, social_media: { facebook, instagram }, photo: "" };
-      students.push(student);
-      localStorage.setItem('students', JSON.stringify(students));
-      alert("Student added!");
-    }
-  }
+/* Go back */
+function goBack(){ showSection("loginSection"); }
 
-  function searchStudent() {
-    const query = document.getElementById('searchInput').value.toLowerCase();
-    const resultsDiv = document.getElementById('searchResults');
-    resultsDiv.innerHTML = "";
-    const filtered = students.filter(s => s.name.toLowerCase().includes(query));
-    filtered.forEach(s => {
-      const div = document.createElement('div');
-      div.className = "student-card";
-      div.innerHTML = `
-        <img src="${s.photo || ''}" alt="Photo">
-        <div>
-          <strong>${s.name}</strong> (${s.age})
-          <br>Birth: ${s.dob || '-'}
-          <br>Gender: ${s.gender || '-'}
-          <br>Email: ${s.email || '-'} | Phone: ${s.phone || '-'}
-          <br>Facebook: ${s.social_media.facebook || '-'} | Instagram: ${s.social_media.instagram || '-'}
-        </div>
-      `;
-      resultsDiv.appendChild(div);
-    });
-  }
+/* Slideshow Auto Play */
+let slideIndex=0;
+function showSlides(){
+  let slides=document.querySelectorAll(".slide");
+  slides.forEach(s=>s.classList.remove("active"));
+  slideIndex=(slideIndex+1)%slides.length;
+  slides[slideIndex].classList.add("active");
+}
+setInterval(showSlides,3000);
 </script>
-
 </body>
 </html>
